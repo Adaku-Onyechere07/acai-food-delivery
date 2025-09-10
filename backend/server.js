@@ -30,6 +30,10 @@ app.use("/api/order", orderRouter)
 app.get("/",(req,res)=>{
     res.send("API Working")
 })
+app.get("/images/:public_id", (req, res) => {
+    const imageUrl = cloudinary.url(req.params.public_id);
+    res.redirect(imageUrl);
+});
 
 app.listen(port,()=>{
     console.log(`Server Started on http://localhost:${port}`)
